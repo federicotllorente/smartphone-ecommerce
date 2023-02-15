@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Layout } from '../components/Layout'
+import { Loader } from '../components/Loader'
 import { getProductList } from '../helpers'
 import { NotFound } from './NotFound'
 
@@ -25,15 +27,11 @@ export const ProductListPage = () => {
     fetchProductList()
   }, [])
 
-  // TODO
   if (isError) return <NotFound />
-  // TODO
-  if (isLoading) return (
-    <span className="mt-8 mx-auto flex w-4 h-4 rounded-full border-4 border-primary-blue border-t-transparent animate-spin"></span>
-  )
+  if (isLoading) return <Loader />
 
   return (
-    <div>
+    <Layout>
       <h1>Product List Page</h1>
       {productList.length > 0 && productList.map(item => (
         <Link key={item.id} to={`/products/${item.id}`}>
@@ -42,6 +40,6 @@ export const ProductListPage = () => {
           </p>
         </Link>
       ))}
-    </div>
+    </Layout>
   )
 }

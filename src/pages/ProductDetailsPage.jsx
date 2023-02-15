@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
+import { Layout } from '../components/Layout'
+import { Loader } from '../components/Loader'
 import { getProductDetails } from '../helpers'
 import { NotFound } from './NotFound'
 
@@ -26,16 +28,14 @@ export const ProductDetailsPage = () => {
     fetchProductDetails()
   }, [productId])
   
-  // TODO
   if (isError) return <NotFound />
-  // TODO
-  if (isLoading) return (<span>Loading...</span>)
+  if (isLoading) return <Loader />
 
   return (
-    <div>
+    <Layout>
       <Link to="/products">{'< Back'}</Link>
       <h1>Product Details Page: {productId}</h1>
       {productDetails && (<span>{productDetails.brand}</span>)}
-    </div>
+    </Layout>
   )
 }
