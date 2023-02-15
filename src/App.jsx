@@ -1,38 +1,14 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-
-// TODO
-const Home = () => (
-  <div>
-    Homepage
-  </div>
-)
-
-// TODO
-const NotFound = () => (
-  <div>
-    Not Found Page
-  </div>
-)
-
-// TODO
-const ProductListPage = () => (
-  <div>
-    Product List Page
-  </div>
-)
-
-// TODO
-const ProductDetailsPage = () => (
-  <div>
-    Product Details Page
-  </div>
-)
+import { Homepage } from './pages/Homepage'
+import { NotFound } from './pages/NotFound'
+import { ProductDetailsPage } from './pages/ProductDetailsPage'
+import { ProductListPage } from './pages/ProductListPage'
 
 const App = () => {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Home />,
+      element: <Homepage />,
       errorElement: <NotFound />
     },
     {
