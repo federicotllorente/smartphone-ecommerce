@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;700&display=swap');
+
+  @font-face {
+    font-family: 'Manrope';
+    src: url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;700&display=swap');
+  }
+
+  body {
+    @apply font-body;
+    @apply font-normal;
+  }
+
+  h1 {
+    @apply text-xl;
+    @apply font-bold;
+  }
+  h2 {
+    @apply text-lg;
+    @apply font-bold;
+  }
+  h3 {
+    @apply text-md;
+    @apply font-bold;
+  }
+  h4,
+  h5,
+  h6 {
+    @apply font-bold;
+  }
+
+  strong {
+    @apply font-bold;
+  }
+
+  .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+  }
+}

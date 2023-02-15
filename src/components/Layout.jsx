@@ -1,8 +1,10 @@
 import { Header } from './Header'
 
-export const Layout = ({ children }) => (
+export const Layout = ({ className, children }) => (
   <>
     <Header />
-    {children}
+    <main className={className}>
+      {children}
+    </main>
   </>
 )

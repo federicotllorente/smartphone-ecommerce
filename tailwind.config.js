@@ -50,11 +50,9 @@ module.exports = {
       },
       transparent: 'transparent'
     },
-    // fontFamily: {
-    //   heading: ['MADE Soulmaze', 'sans-serif'],
-    //   'heading-alt': ['MADE Soulmaze Outline', 'sans-serif'],
-    //   body: ['Outfit', 'sans-serif']
-    // },
+    fontFamily: {
+      body: ['Manrope', 'sans-serif']
+    },
     fontSize: {
       xxs: ['12px', { lineHeight: '14.4px' }],
       xs: ['14px', { lineHeight: '16.8px' }],
@@ -68,8 +66,7 @@ module.exports = {
     fontWeight: {
       light: '300',
       normal: '400',
-      semibold: '600',
-      bold: '800'
+      bold: '700'
     },
     spacing: {
       0: '0px',
@@ -135,9 +132,11 @@ module.exports = {
     },
     extend: {
       width: {
+        3: '24px',
         4: '32px'
       },
       height: {
+        3: '24px',
         4: '32px'
       }
     }
