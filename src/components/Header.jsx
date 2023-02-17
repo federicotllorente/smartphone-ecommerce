@@ -1,22 +1,24 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useContext, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 import { useBreakpoint } from '../helpers/useBreakpoint'
 import { ReactComponent as MenuIcon } from '../assets/svg/menu.svg'
 import { ReactComponent as CartIcon } from '../assets/svg/shopping_cart.svg'
 import { getCartQuantityInLocalStorage } from '../helpers'
+import { CartContext } from '../helpers/CartContext'
 
 export const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
-  const [cartQuantity, setCartQuantity] = useState(null)
   const breakpoint = useBreakpoint()
   const isMobile = useMemo(() => breakpoint === 'xs' || breakpoint === 'sm', [breakpoint])
+
+  const { cartQuantity, setCartQuantity } = useContext(CartContext)
 
   useEffect(() => {
     // Close when navigating
     setMenuIsOpen(false)
 
-    // TODO Update - Use a context?
+    // Set context with data in the local storage
     const cartQuantityInLocalStorage = getCartQuantityInLocalStorage()
     setCartQuantity(cartQuantityInLocalStorage)
   }, [])
@@ -50,11 +52,11 @@ export const Header = () => {
         </div>
         <button className="relative w-4 h-4 mr-1">
           <CartIcon className="absolute -inset-1 scale-[0.5] fill-secondary-white" />
-          {cartQuantity && (
+          {cartQuantity ? (
             <span className="absolute z-3 w-[18px] h-[18px] -top-0.5 -right-0.5 bg-secondary-black rounded-full text-xxs leading-normal">
               {cartQuantity}
             </span>
-          )}
+          ) : null}
         </button>
       </div>
     </section>

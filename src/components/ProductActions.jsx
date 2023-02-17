@@ -1,11 +1,15 @@
+import { useContext, useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { useCallback, useEffect, useMemo, useState } from 'react'
 import { ReactComponent as CartIcon } from '../assets/svg/shopping_cart.svg'
 import { increaseCartQuantityInLocalStorage } from '../helpers'
+import { CartContext } from '../helpers/CartContext'
+import { ProductOption } from './ProductOption'
 
 export const ProductActions = ({ productId, options }) => {
   const [selectedOptions, setSelectedOptions] =  useState([])
   const [shouldShowTooltipInOptions, setShouldShowTooltipInOptions] = useState(false)
+
+  const { setCartQuantity } = useContext(CartContext)
 
   useEffect(() => {
     const newSelectedOptions = []
@@ -39,7 +43,8 @@ export const ProductActions = ({ productId, options }) => {
     }).then(data => data.json()).catch(err => console.error(err))
 
     if (res.count) {
-      increaseCartQuantityInLocalStorage(res.count)
+      const updatedCartQuantity = increaseCartQuantityInLocalStorage(res.count)
+      setCartQuantity(updatedCartQuantity)
     }
   }
 
@@ -68,37 +73,5 @@ export const ProductActions = ({ productId, options }) => {
         <span className="pl-3.5">Add to cart</span>
       </button>
     </>
-  )
-}
-
-const ProductOption = ({ title, values, selectedOptions, setSelectedOptions, shouldShowTooltip, className }) => {
-  const selectedValue = useMemo(() => selectedOptions.find(i => i.name == title), [selectedOptions])
-
-  return (
-    <div className={className}>
-      <div className="flex gap-1">
-        <h3>{`${title.charAt(0).toUpperCase()}${title.slice(1)}`}</h3>
-        {!selectedValue?.code && shouldShowTooltip && (
-          <span className="px-1 py-0.5 text-xs bg-secondary-red text-secondary-white">Please select an option</span>
-        )}
-      </div>
-      <div className="pt-1 flex gap-1">
-        {values.map(value => (
-          <button
-            key={value.name}
-            onClick={() => setSelectedOptions([...selectedOptions.filter(i => i.name !== title), { name: title, code: value.code }])}
-            className={classNames(
-              'px-1 py-0.5 border rounded hover:border-primary-blue-light hover:bg-primary-blue-light hover:text-secondary-black transition',
-              {
-                'border-secondary-black-darkWithOpacity text-secondary-black': selectedValue?.code != value.code,
-                'border-secondary-black bg-secondary-black text-secondary-white': selectedValue?.code == value.code
-              }
-            )}
-          >
-            {value.name}
-          </button>
-        ))}
-      </div>
-    </div>
   )
 }

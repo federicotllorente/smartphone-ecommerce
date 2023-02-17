@@ -10,4 +10,5 @@ export const increaseCartQuantityInLocalStorage = (value) => {
   } else {
     localStorage.setItem('cart-quantity', value)
   }
+  return getCartQuantityInLocalStorage()
 }

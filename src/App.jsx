@@ -1,10 +1,14 @@
+import { useState } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { CartContext } from './helpers/CartContext'
 import { Homepage } from './pages/Homepage'
 import { NotFound } from './pages/NotFound'
 import { ProductDetailsPage } from './pages/ProductDetailsPage'
 import { ProductListPage } from './pages/ProductListPage'
 
 const App = () => {
+  const [cartQuantity, setCartQuantity] = useState(0)
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -28,7 +32,9 @@ const App = () => {
   ])
 
   return (
-    <RouterProvider router={router} />
+    <CartContext.Provider value={{ cartQuantity, setCartQuantity }}>
+      <RouterProvider router={router} />
+    </CartContext.Provider>
   )
 }
 
