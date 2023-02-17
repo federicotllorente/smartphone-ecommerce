@@ -9,7 +9,7 @@ export const Searchbar = ({
       type="text"
       name="search"
       id="search"
-      className="w-full pl-2 pr-6 py-1 border-2 border-secondary-black-darkWithOpacity rounded"
+      className="w-full pl-2 pr-6 py-1 border border-secondary-black-darkWithOpacity rounded"
       placeholder="Search something..."
       onChange={handleSearchBarOnChange}
     />

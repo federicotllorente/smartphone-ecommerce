@@ -64,7 +64,7 @@ export const ProductListPage = () => {
 
   return (
     <Layout>
-      <div className="p-2 flex flex-col md:flex-row-reverse justify-between gap-3">
+      <div className="px-2 pb-2 flex flex-col md:flex-row-reverse justify-between gap-3">
         <Searchbar
           handleSearchBarOnChange={handleSearchBarOnChange}
           handleSearchBarOnSubmit={handleSearchBarOnSubmit}

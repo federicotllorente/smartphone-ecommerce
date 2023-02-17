@@ -3,7 +3,7 @@ import { Layout } from '../components/Layout'
 
 export const Homepage = () => {
   return (
-    <Layout className="pt-6 px-2 flex flex-col justify-center items-center gap-3 text-center">
+    <Layout className="px-2 flex flex-col justify-center items-center gap-3 text-center">
       <h2>Welcome to the <span className="text-primary-blue hover:text-primary-purple transition">Fabulous Ecommerce</span></h2>
       <Link
         to="/products"
