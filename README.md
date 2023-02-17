@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# About this project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). This is a simple example of an ecommerce platform. Some of the additional libraries used in this project are: [React-Router](https://reactrouter.com/), [Tailwindcss](https://tailwindcss.com/docs/), [Jest](https://jestjs.io/docs/) and [ESLint](https://eslint.org/docs/). Also to mention that the icons and the typography were imported/downloaded from [Google Fonts](https://fonts.google.com/).
+
+## About the caching
+
+Everytime the list or a product information is requested from the Frontend, first the local storage will be checked if a existent piece of data was stored there. If it's empty, this data will be fetched from an API and then stored (in the browsers local storage) if the request is successful. Also a timestamp will be stored, in order to update this stored data after 1 hour (if another request is made to the same endpoint).
+
+### What about the cart quantity?
+
+This piece of data is also stored in the browser local storage, but for being able to persist it on the Frontend side, a React Context is being used. So if the quantity changes, the number showed in the header can be refreshed automatically.
 
 ## Available Scripts
 
