@@ -5,9 +5,11 @@ export const ProductOption = ({ title, values, selectedOptions, setSelectedOptio
   const selectedValue = useMemo(() => selectedOptions.find(i => i.name == title), [selectedOptions])
 
   return (
-    <div className={className}>
+    <div className={className} data-testid="productOption">
       <div className="flex gap-1">
-        <h3>{`${title.charAt(0).toUpperCase()}${title.slice(1)}`}</h3>
+        <h3 data-testid="productOptionTitle">
+          {`${title.charAt(0).toUpperCase()}${title.slice(1)}`}
+        </h3>
         {!selectedValue?.code && shouldShowTooltip && (
           <span className="px-1 py-0.5 text-xs bg-secondary-red text-secondary-white">Please select an option</span>
         )}
@@ -24,6 +26,7 @@ export const ProductOption = ({ title, values, selectedOptions, setSelectedOptio
                 'border-secondary-black bg-secondary-black text-secondary-white': selectedValue?.code == value.code
               }
             )}
+            data-testid="productOptionValue"
           >
             {value.name}
           </button>

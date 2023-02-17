@@ -24,7 +24,10 @@ export const Header = () => {
   }, [])
 
   return (
-    <section className="fixed z-2 w-full bg-primary-blue text-secondary-white">
+    <section
+      className="fixed z-2 w-full bg-primary-blue text-secondary-white"
+      data-testid="header"
+    >
       <div className="relative md:p-2 flex justify-between md:justify-start items-center md:gap-2 md:container md:mx-auto">
         <div className="md:w-full flex items-center md:justify-between">
           {isMobile && (
@@ -33,12 +36,20 @@ export const Header = () => {
             </button>
           )}
           <Link to="/">
-            <h2 className="text-md">FabulousEcommerce</h2>
+            <h2
+              className="text-md"
+              data-testid="logo"
+            >
+              FabulousEcommerce
+            </h2>
           </Link>
           {(!isMobile || menuIsOpen) && (
-            <div className={classNames({
-              'w-full h-full mt-6 flex flex-col fixed top-0 z-2 bg-secondary-white text-secondary-black': isMobile
-            })}>
+            <div
+              className={classNames({
+                'w-full h-full mt-6 flex flex-col fixed top-0 z-2 bg-secondary-white text-secondary-black': isMobile
+              })}
+              data-testid="menu"
+            >
               <Link
                 to="/products"
                 className={classNames({
@@ -51,7 +62,10 @@ export const Header = () => {
           )}
         </div>
         <button className="relative w-4 h-4 mr-1">
-          <CartIcon className="absolute -inset-1 scale-[0.5] fill-secondary-white" />
+          <CartIcon
+            className="absolute -inset-1 scale-[0.5] fill-secondary-white"
+            data-testid="cartIcon"
+          />
           {cartQuantity ? (
             <span className="absolute z-3 w-[18px] h-[18px] -top-0.5 -right-0.5 bg-secondary-black rounded-full text-xxs leading-normal">
               {cartQuantity}

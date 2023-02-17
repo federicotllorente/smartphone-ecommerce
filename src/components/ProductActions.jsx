@@ -12,12 +12,15 @@ export const ProductActions = ({ productId, options }) => {
   const { setCartQuantity } = useContext(CartContext)
 
   useEffect(() => {
+    if (!options) return
+
     const newSelectedOptions = []
     Object.keys(options).forEach(key => {
       options[key].length == 1
         ? newSelectedOptions.push({ name: key, code: options[key][0].code })
         : newSelectedOptions.push({ name: key })
     })
+
     setSelectedOptions(newSelectedOptions)
   }, [])
 
@@ -68,6 +71,7 @@ export const ProductActions = ({ productId, options }) => {
       <button
         onClick={handleAddToCart}
         className="relative mt-2 px-2 py-1 bg-primary-blue text-secondary-white font-bold hover:bg-primary-purple transition"
+        data-testid="addToCartButton"
       >
         <CartIcon className="absolute left-0 -inset-y-0.5 scale-[0.4] fill-secondary-white" />
         <span className="pl-3.5">Add to cart</span>
