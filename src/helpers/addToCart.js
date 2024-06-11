@@ -1,11 +1,10 @@
 import { addToCartInLocalStorage } from './cartQuantityInLocalStorage'
 
 export const addToCart = async ({
-  productId,
-  colorCode,
-  storageCode
+  product,
+  quantity = 1
 }) => {
-  if (!productId || !colorCode || !storageCode) return
+  if (!product.id || !product.color || !product.storage) return
   
   const res = await fetch(process.env.REACT_APP_API_CART, {
     method: 'POST',
@@ -14,20 +13,16 @@ export const addToCart = async ({
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      id: productId,
-      colorCode,
-      storageCode
+      id: product.id,
+      colorCode: product.color,
+      storageCode: product.storage
     })
   }).then(data => data.json()).catch(err => console.error(err))
 
   if (res.count) {
     const cart = addToCartInLocalStorage(
-      {
-        id: productId,
-        color: colorCode,
-        storage: storageCode
-      },
-      res.count
+      product,
+      quantity
     )
     return cart
   }

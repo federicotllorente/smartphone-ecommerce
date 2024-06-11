@@ -9,12 +9,14 @@ import { ProductOption } from './ProductOption'
 import { QuantityButton } from './QuantityButton'
 import { Loader } from './Loader'
 
-export const ProductActions = ({ productId, options }) => {
+export const ProductActions = ({ product }) => {
   const [selectedOptions, setSelectedOptions] =  useState([])
   // const [selectedOptionInCart, setSelectedOptionInCart] =  useState(null)
   const [selectedOptionsIsComplete, setSelectedOptionsIsComplete] = useState(false)
   const [shouldShowTooltipInOptions, setShouldShowTooltipInOptions] = useState(false)
   const [quantity, setQuantity] = useState(1)
+
+  const { options } = product
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -71,9 +73,16 @@ export const ProductActions = ({ productId, options }) => {
     if (!colorCode || !storageCode) return
     
     const cartToSet = await addToCart({
-      productId,
-      colorCode,
-      storageCode
+      product: {
+        id: product.id,
+        details: {
+          ...product,
+          id: undefined
+        },
+        color: colorCode,
+        storage: storageCode
+      },
+      quantity
     })
 
     if (cartToSet) setCart(cartToSet)

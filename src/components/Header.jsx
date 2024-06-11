@@ -28,7 +28,7 @@ export const Header = () => {
 
   useEffect(() => {
     setMenuIsOpen(false)
-    setCartModalIsOpen(false)
+    // setCartModalIsOpen(false)
   }, [])
 
   return (

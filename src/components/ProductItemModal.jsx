@@ -57,7 +57,7 @@ export const ProductItemModal = ({
               <span className="text-lg font-bold">$ {productDetails.price}</span>
               <ProductDescription {...productDetails} />
               <hr className="my-2 border-secondary-black opacity-20" />
-              <ProductActions productId={productId} options={productDetails.options} />
+              <ProductActions product={productDetails} />
             </div>
             <span className="absolute top-3 right-3">
               <button

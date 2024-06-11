@@ -65,7 +65,7 @@ export const ProductDetailsPage = () => {
           <span className="text-lg font-bold">$ {productDetails.price}</span>
           <ProductDescription {...productDetails} />
           <hr className="my-2 border-secondary-black opacity-20" />
-          <ProductActions productId={productId} options={productDetails.options} />
+          <ProductActions product={productDetails} />
         </div>
       </div>
 
