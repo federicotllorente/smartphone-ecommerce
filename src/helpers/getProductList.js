@@ -26,7 +26,7 @@ export const getProductList = async () => {
 }
 
 const fetchProductListData = async () => {
-  const response = await fetch('https://itx-frontend-test.onrender.com/api/product')
+  const response = await fetch(process.env.REACT_APP_API_PRODUCT)
 
   try {
     const data = await response.json()

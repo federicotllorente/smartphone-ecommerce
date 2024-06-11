@@ -144,6 +144,13 @@ module.exports = {
       },
       maxWidth: {
         20: '160px'
+      },
+      maxHeight: {
+        modal: 'calc(100vh - 144px)',
+        'modal-md': 'calc(100vh - 152px)'
+      },
+      aspectRatio: {
+        '3/4': '3 / 4'
       }
     }
   },

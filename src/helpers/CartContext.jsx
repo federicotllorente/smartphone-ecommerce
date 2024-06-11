@@ -1,6 +1,3 @@
 import { createContext } from 'react'
 
-export const CartContext = createContext({
-  cartQuantity: 0,
-  setCartQuantity: () => {}
-})
+export const CartContext = createContext(null)

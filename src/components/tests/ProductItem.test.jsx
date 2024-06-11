@@ -6,7 +6,7 @@ const itemData = {
   id: 'example',
   brand: 'Acer',
   model: 'Iconia Talk S',
-  imgUrl: 'https://itx-frontend-test.onrender.com/images/ZmGrkLRPXOTpxsU4jjAcv.jpg',
+  imgUrl: `${process.env.REACT_APP_API_IMAGES}/ZmGrkLRPXOTpxsU4jjAcv.jpg`,
   price: '170'
 }
 

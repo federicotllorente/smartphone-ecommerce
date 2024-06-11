@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
+
 import { Layout } from '../components/Layout'
 import { Loader } from '../components/Loader'
 import { ProductItem } from '../components/ProductItem'
 import { Searchbar } from '../components/Searchbar'
+
 import { getProductList } from '../helpers'
 import { NotFound } from './NotFound'
 
@@ -59,8 +61,8 @@ export const ProductListPage = () => {
     }
   }, [searchInput])
 
+  if (isLoading) return <Layout><Loader /></Layout>
   if (isError) return <NotFound />
-  if (isLoading) return <Loader />
 
   return (
     <Layout>
@@ -71,7 +73,7 @@ export const ProductListPage = () => {
         />
         <h2 className="text-center">All our products</h2>
       </div>
-      <div className="p-2 grid grid-cols-2 md:grid-cols-4 gap-1 md:gap-2">
+      <div className="p-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2">
         {searchInput
           ? filteredProductList.length > 0 && filteredProductList.map(item => (
             <ProductItem key={item.id} {...item} />
