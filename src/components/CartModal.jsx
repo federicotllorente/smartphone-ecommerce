@@ -11,7 +11,7 @@ export const CartModal = ({ onClose }) => {
   return (
     <>
       <div className="fixed top-0 right-0 w-screen h-screen bg-[#000] opacity-70 z-[49]" onClick={onClose}></div>
-      <div className="fixed right-0 top-0 w-full md:w-[600px] h-full bg-secondary-white z-[50] shadow-lg shadow-black/30">
+      <div className="fixed right-0 top-0 w-full md:w-[600px] h-full bg-secondary-white z-[50] shadow-lg shadow-black/30 overflow-y-scroll">
         <span className="absolute top-3 right-3">
           <button
             className="relative w-[24px] h-[24px]"

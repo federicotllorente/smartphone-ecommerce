@@ -10,6 +10,7 @@ import { ProductItem } from '../components/ProductItem'
 import { getProductDetails, getProductList } from '../helpers'
 import { NotFound } from './NotFound'
 import { ReactComponent as Arrow } from '../assets/svg/arrow_forward.svg'
+import { getProductRecommendations } from '../helpers/getProductRecommendations'
 
 export const ProductDetailsPage = () => {
   const { productId } = useLoaderData()
@@ -81,9 +82,9 @@ const RecommendationGrid = ({ productId }) => {
   const [isError, setIsError] = useState(false)
 
   /* Temporary */
-  const fetchProductList = async () => {
+  const fetchProductRecommendations = async () => {
     setIsLoading(true)
-    const response = await getProductList()
+    const response = await getProductRecommendations(productId)
 
     try {
       setProductList(response.data)
@@ -95,7 +96,7 @@ const RecommendationGrid = ({ productId }) => {
   }
   
   useEffect(() => {
-    fetchProductList()
+    fetchProductRecommendations()
   }, [])
   
   if (isError || !productList.length) return null

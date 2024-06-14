@@ -37,9 +37,22 @@ const fetchProductDetailsData = async (productId) => {
     return {
       expiringDate: Date.now() + (1000 * 60 * 60),
       url: response.url,
-      data
+      data: normalizeProductData(data)
     }
   } catch (err) {
     console.error(err)
   }
 }
+
+export const normalizeProductData = data => ({
+  ...data,
+  // bluetooth: JSON.parse(data.bluetooth.replace(/'/g, '"')),
+  colors: JSON.parse(data.colors.replace(/'/g, '"')),
+  // internalMemory: JSON.parse(data.internalMemory.replace(/'/g, '"')),
+  options: JSON.parse(data.options.replace(/'/g, '"')),
+  // primaryCamera: JSON.parse(data.primaryCamera.replace(/'/g, '"')),
+  // secondaryCmera: JSON.parse(data.secondaryCmera.replace(/'/g, '"')),
+  // sensors: JSON.parse(data.sensors.replace(/'/g, '"')),
+  // sim: JSON.parse(data.sim.replace(/'/g, '"')),
+  // wlan: JSON.parse(data.wlan.replace(/'/g, '"')),
+})

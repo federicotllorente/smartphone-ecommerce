@@ -33,7 +33,7 @@ const fetchProductListData = async () => {
     return {
       expiringDate: Date.now() + (1000 * 60 * 60),
       url: response.url,
-      data
+      data: data.products
     }
   } catch (err) {
     console.error(err)
